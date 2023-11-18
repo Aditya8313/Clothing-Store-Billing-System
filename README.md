@@ -1,1 +1,66 @@
 # Clothing-Store-Billing-System
+
+
+
+#include <stdio.h>
+#include <stdlib.h>
+
+// Function to calculate the total amount
+float calculateTotal(float price, int quantity) {
+    return price * quantity;
+}
+
+int main() {
+    // Product details
+    char productName[50];
+    float productPrice;
+    int quantity;
+
+    // Customer details
+    char customerName[50];
+    char customerContact[15];
+
+    // Billing details
+    float totalAmount = 0;
+    float discount = 0;
+    float finalAmount;
+
+    // Get product details
+    printf("Enter product name: ");
+    scanf("%s", productName);
+    printf("Enter product price: ");
+    scanf("%f", &productPrice);
+    printf("Enter quantity: ");
+    scanf("%d", &quantity);
+
+    // Calculate total amount
+    totalAmount = calculateTotal(productPrice, quantity);
+
+    // Get customer details
+    printf("\nEnter customer name: ");
+    scanf("%s", customerName);
+    printf("Enter customer contact number: ");
+    scanf("%s", customerContact);
+
+    // Apply discount based on total amount
+    if (totalAmount > 5000) {
+        discount = 0.1 * totalAmount;  // 10% discount for total amount > 5000
+    }
+
+    // Calculate final amount
+    finalAmount = totalAmount - discount;
+
+    // Display bill
+    printf("\n===== Bill =====\n");
+    printf("Product: %s\n", productName);
+    printf("Price per unit: $%.2f\n", productPrice);
+    printf("Quantity: %d\n", quantity);
+    printf("Total amount: $%.2f\n", totalAmount);
+    printf("Discount: $%.2f\n", discount);
+    printf("Final amount: $%.2f\n", finalAmount);
+    printf("\nCustomer Details\n");
+    printf("Name: %s\n", customerName);
+    printf("Contact: %s\n", customerContact);
+
+    return 0;
+}
